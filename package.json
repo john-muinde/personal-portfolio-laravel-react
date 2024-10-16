@@ -7,7 +7,8 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "deploy": "npm run prod && git add . && git commit -m \"$npm_config_message\" && git push origin-2 main"
     },
     "devDependencies": {
         "@babel/preset-react": "^7.12.13",
