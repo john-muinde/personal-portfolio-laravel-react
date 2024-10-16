@@ -13,32 +13,33 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     @include('common.googleAnalytics')
     @if (!empty($portfolioConfig['script']['header']) && $portfolioConfig['script']['header'] != '')
         <script>
-            {!!$portfolioConfig['script']['header']!!}
+            {!! $portfolioConfig['script']['header'] !!}
         </script>
     @endif
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta property="og:title" content="{{$portfolioConfig['seo']['title']}}"/>
-    <meta property="title" content="{{$portfolioConfig['seo']['title']}}"/>
-    <meta name="description" content="{{$portfolioConfig['seo']['description']}}" />
-    <meta property="og:description" content="{{$portfolioConfig['seo']['description']}}"/>
-    <meta name="author" content="{{$portfolioConfig['seo']['author']}}" />
-    <meta property="og:image" content="{{asset($portfolioConfig['seo']['image'])}}" />
-    <meta property="og:image:secure_url" content="{{asset($portfolioConfig['seo']['image'])}}" />
+    <meta property="og:title" content="{{ $portfolioConfig['seo']['title'] }}" />
+    <meta property="title" content="{{ $portfolioConfig['seo']['title'] }}" />
+    <meta name="description" content="{{ $portfolioConfig['seo']['description'] }}" />
+    <meta property="og:description" content="{{ $portfolioConfig['seo']['description'] }}" />
+    <meta name="author" content="{{ $portfolioConfig['seo']['author'] }}" />
+    <meta property="og:image" content="{{ asset($portfolioConfig['seo']['image']) }}" />
+    <meta property="og:image:secure_url" content="{{ asset($portfolioConfig['seo']['image']) }}" />
 
-    <title>{{$about->name}}</title>
+    <title>{{ $about->name }}</title>
 
-    <link rel="shortcut icon" type="image/x-icon"  href="{{ Utils::getFavicon() }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ Utils::getFavicon() }}">
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/common/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/common/lib/fontawesome/css/all.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/common/lib/mdi-icon/css/materialdesignicons.min.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/common/lib/boxicons/css/boxicons.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/common/lib/mdi-icon/css/materialdesignicons.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/common/lib/boxicons/css/boxicons.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/common/lib/iziToast/css/iziToast.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/common/lib/aos/aos.css') }}" rel="stylesheet">
 
@@ -47,27 +48,29 @@
     <link href="{{ asset('assets/themes/rigel/css/custom.css') }}" rel="stylesheet">
     <style>
         :root {
-          --z-accent-color: {{$accentColor}};
+            --z-accent-color: {{ $accentColor }};
         }
-        .bg-primary, .progress-bar {
-            background-color: {{$accentColor.' !important'}};
+
+        .bg-primary,
+        .progress-bar {
+            background-color: {{ $accentColor . ' !important' }};
         }
 
         a {
-            color: {{$accentColor}};
+            color: {{ $accentColor }};
         }
 
         a:hover {
-            color: rgba({{$accentColorRGB}}, .7);
+            color: rgba({{ $accentColorRGB }}, .7);
         }
 
         .form-control:focus {
-            border-color: rgba({{$accentColorRGB}}, .5) !important;
+            border-color: rgba({{ $accentColorRGB }}, .5) !important;
             box-shadow: none;
         }
 
         .text-primary {
-            color: {{$accentColor.' !important'}};
+            color: {{ $accentColor . ' !important' }};
         }
     </style>
 </head>
@@ -82,45 +85,46 @@
             <ul>
                 <li class="active"><a href="#hero"><i class="bx bx-home"></i> <span>Home</span></a></li>
                 @if ($portfolioConfig['visibility']['about'])
-                <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+                    <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
                 @endif
                 @if ($portfolioConfig['visibility']['skills'])
-                <li><a href="#skills"><i class='bx bx-code-block'></i> <span>Skills</span></a></li>
+                    <li><a href="#skills"><i class='bx bx-code-block'></i> <span>Skills</span></a></li>
                 @endif
                 @if ($portfolioConfig['visibility']['experiences'])
-                <li><a href="#experiences"><i class='bx bx-briefcase'></i> <span>Experiences</span></a></li>
+                    <li><a href="#experiences"><i class='bx bx-briefcase'></i> <span>Experiences</span></a></li>
                 @endif
                 @if ($portfolioConfig['visibility']['education'])
-                <li><a href="#education"><i class='bx bx-book' ></i> <span>Education</span></a></li>
+                    <li><a href="#education"><i class='bx bx-book'></i> <span>Education</span></a></li>
                 @endif
                 @if ($portfolioConfig['visibility']['projects'])
-                <li><a href="#projects"><i class='bx bxs-package'></i> <span>Projects</span></a></li>
+                    <li><a href="#projects"><i class='bx bxs-package'></i> <span>Projects</span></a></li>
                 @endif
                 @if ($portfolioConfig['visibility']['services'])
-                <li><a href="#services"><i class="bx bx-server"></i> <span>Services</span></a></li>
+                    <li><a href="#services"><i class="bx bx-server"></i> <span>Services</span></a></li>
                 @endif
                 @if ($portfolioConfig['visibility']['contact'])
-                <li><a href="#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+                    <li><a href="#contact"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
                 @endif
             </ul>
         </nav><!-- .nav-menu -->
     </header><!-- End Header -->
 
     <!-- ======= hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center" style="background-image: url('{{asset($about->cover)}}');">
+    <section id="hero" class="d-flex flex-column justify-content-center"
+        style="background-image: url('{{ asset($about->cover) }}');">
         <div class="container" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <h1>{{ $about->name }}</h1>
             <p><span class="typed"></span></p>
             @if ($portfolioConfig['visibility']['cv'])
                 <div class="my-3">
-                    <a href="{{$about->cv}}" class="btn btn-light btn-sm" download>Download CV</a>
+                    <a href="{{ $about->cv }}" class="btn btn-light btn-sm" download>Download CV</a>
                 </div>
             @endif
             @if ($about->social_links)
                 <div class="social-links">
                     @foreach (json_decode($about->social_links) as $social)
-                        <a href="{{$social->link}}" target=="_blank" class="social-icon">
-                            <i class="{{$social->iconClass}}"></i>
+                        <a href="{{ $social->link }}" target=="_blank" class="social-icon">
+                            <i class="{{ $social->iconClass }}"></i>
                         </a>
                     @endforeach
                 </div>
@@ -130,273 +134,291 @@
 
     <main id="main">
         @if ($portfolioConfig['visibility']['about'])
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container" data-aos="zoom-in">
-                <div class="section-title">
-                    <h2>About</h2>
-                </div>
+            <!-- ======= About Section ======= -->
+            <section id="about" class="about">
+                <div class="container" data-aos="zoom-in">
+                    <div class="section-title">
+                        <h2>About</h2>
+                    </div>
 
-                <div class="row">
-                    <div class="col-lg-4 text-center">
-                        <img data-src="{{asset($about->avatar)}}" src="{{asset('assets/common/img/lazyloader.gif')}}" class="lazy img-fluid rounded-circle img-profile" alt="">
-                    </div>
-                    <div class="col-lg-8 pt-4 pt-lg-0 content my-lg-auto">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <ul>
-                                    @if ($about->phone && $about->phone !== '')
-                                        <li><i class="fas fa-angle-right"></i> <strong>Phone:</strong> {{$about->phone}}</li>
-                                    @endif
-                                    @if ($about->email && $about->email !== '')
-                                        <li><i class="fas fa-angle-right"></i> <strong>Email:</strong> {{$about->email}}</li>
-                                    @endif
-                                    @if ($about->address && $about->address !== '')
-                                        <li><i class="fas fa-angle-right"></i> <strong>Address:</strong> {{$about->address}}</li>
-                                    @endif
-                                </ul>
-                            </div>
+                    <div class="row">
+                        <div class="col-lg-4 text-center">
+                            <img data-src="{{ asset($about->avatar) }}"
+                                src="{{ asset('assets/common/img/lazyloader.gif') }}"
+                                class="lazy img-fluid rounded-circle img-profile" alt="">
                         </div>
-                        <p>{{ $about->description }}</p>
+                        <div class="col-lg-8 pt-4 pt-lg-0 content my-lg-auto">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <ul>
+                                        @if ($about->phone && $about->phone !== '')
+                                            <li><i class="fas fa-angle-right"></i> <strong>Phone:</strong>
+                                                {{ $about->phone }}</li>
+                                        @endif
+                                        @if ($about->email && $about->email !== '')
+                                            <li><i class="fas fa-angle-right"></i> <strong>Email:</strong>
+                                                {{ $about->email }}</li>
+                                        @endif
+                                        @if ($about->address && $about->address !== '')
+                                            <li><i class="fas fa-angle-right"></i> <strong>Address:</strong>
+                                                {{ $about->address }}</li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            <p>{{ $about->description }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section><!-- End About Section -->
+            </section><!-- End About Section -->
         @endif
 
         @if ($portfolioConfig['visibility']['skills'])
-        <!-- ======= Skills Section ======= -->
-        <section id="skills" class="skills section-bg">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Skills</h2>
-                </div>
-                <div class="row skills-content">
-                    @if (!empty($skills))
-                        @foreach ($skills as $skill)
-                            @if ((int)$portfolioConfig['visibility']['skillProficiency'])
-                            <div class="col-lg-6">
-                                <div class="progress" data-aos="fade-up">
-                                    <span class="skill">{{$skill->name}} <i class="val">{{$skill->proficiency}}%</i></span>
-                                    <div class="progress-bar-wrap">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="{{$skill->proficiency}}" aria-valuemin="0" aria-valuemax="100"></div>
+            <!-- ======= Skills Section ======= -->
+            <section id="skills" class="skills section-bg">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Skills</h2>
+                    </div>
+                    <div class="row skills-content">
+                        @if (!empty($skills))
+                            @foreach ($skills as $skill)
+                                @if ((int) $portfolioConfig['visibility']['skillProficiency'])
+                                    <div class="col-lg-6">
+                                        <div class="progress" data-aos="fade-up">
+                                            <span class="skill">{{ $skill->name }} <i
+                                                    class="val">{{ $skill->proficiency }}%</i></span>
+                                            <div class="progress-bar-wrap">
+                                                <div class="progress-bar" role="progressbar"
+                                                    aria-valuenow="{{ $skill->proficiency }}" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            @else
-                            <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="100">
-                                <div class="card z-hover skill-card text-center">
-                                    <div class="card-body center-this">
-                                        {{$skill->name}}
+                                @else
+                                    <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="100">
+                                        <div class="card z-hover skill-card text-center">
+                                            <div class="card-body center-this">
+                                                {{ $skill->name }}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            @endif
-                        @endforeach
-                    @endif
+                                @endif
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
-            </div>
-        </section><!-- End Skills Section -->
+            </section><!-- End Skills Section -->
         @endif
 
         @if ($portfolioConfig['visibility']['experiences'])
-        <!-- ======= Experiences Section ======= -->
-        <section id="experiences" class="resume">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Experiences</h2>
+            <!-- ======= Experiences Section ======= -->
+            <section id="experiences" class="resume">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Experiences</h2>
+                    </div>
+                    <div>
+                        @if ($experiences)
+                            @foreach ($experiences as $experience)
+                                <div class="resume-item" data-aos="fade-up">
+                                    <h4>{{ $experience->position ? $experience->position : '' }}</h4>
+                                    <h5>{{ $experience->period ? $experience->period : '' }}</h5>
+                                    <p class="font-weight-bold text-muted">
+                                        {{ $experience->company ? $experience->company : '' }}</p>
+                                    <p>{{ $experience->details ? $experience->details : '' }}</p>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
-                <div>
-                    @if ($experiences)
-                        @foreach ($experiences as $experience)
-                            <div class="resume-item" data-aos="fade-up">
-                                <h4>{{$experience->position ? $experience->position : ''}}</h4>
-                                <h5>{{$experience->period ? $experience->period : ''}}</h5>
-                                <p class="font-weight-bold text-muted">{{$experience->company ? $experience->company : ''}}</p>
-                                <p>{{$experience->details ? $experience->details : ''}}</p>
-                            </div>
-                        @endforeach
-                    @endif
-                </div>
-            </div>
-        </section><!-- End Experiences Section -->
+            </section><!-- End Experiences Section -->
         @endif
 
         @if ($portfolioConfig['visibility']['education'])
-        <!-- ======= Education Section ======= -->
-        <section id="education" class="resume">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Education</h2>
+            <!-- ======= Education Section ======= -->
+            <section id="education" class="resume">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Education</h2>
+                    </div>
+                    <div>
+                        @if ($education)
+                            @foreach ($education as $value)
+                                <div class="resume-item" data-aos="fade-up">
+                                    <h4>{{ $value->degree ? $value->degree : '' }}</h4>
+                                    <h5>{{ $value->period ? $value->period : '' }}</h5>
+                                    <p class="font-weight-bold text-muted">
+                                        {{ $value->institution ? $value->institution : '' }}</p>
+                                    <span>{{ $value->degree ? $value->degree : '' }}</span>
+                                    <p>{{ $value->cgpa ? $value->cgpa : '' }}</p>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
-                <div>
-                    @if ($education)
-                        @foreach ($education as $value)
-                            <div class="resume-item" data-aos="fade-up">
-                                <h4>{{$value->degree ? $value->degree : ''}}</h4>
-                                <h5>{{$value->period ? $value->period : ''}}</h5>
-                                <p class="font-weight-bold text-muted">{{$value->institution ? $value->institution : ''}}</p>
-                                <span>{{$value->degree ? $value->degree : ''}}</span>
-                                <p>{{$value->cgpa ? $value->cgpa : ''}}</p>
-                            </div>
-                        @endforeach
-                    @endif
-                </div>
-            </div>
-        </section><!-- End Education Section -->
+            </section><!-- End Education Section -->
         @endif
 
         @if ($portfolioConfig['visibility']['projects'])
-        <!-- ======= Projects Section ======= -->
-        <section id="projects" class="resume">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Projects</h2>
+            <!-- ======= Projects Section ======= -->
+            <section id="projects" class="resume">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Projects</h2>
+                    </div>
+                    <div>
+                        <div id="react-project-root" data-accentcolor="{{ $accentColor }}"
+                            data-demomode="{{ $demoMode }}" />
+                        <div class="mb-5"></div>
+                    </div>
                 </div>
-                <div>
-                    <div 
-                        id="react-project-root" 
-                        data-accentcolor="{{$accentColor}}" 
-                        data-demomode="{{$demoMode}}"
-                    />
-                    <div class="mb-5"></div>
-                </div>
-            </div>
-        </section><!-- End Projects Section -->
+            </section><!-- End Projects Section -->
         @endif
 
         @if ($portfolioConfig['visibility']['services'])
-        <!-- ======= Services Section ======= -->
-        <section id="services" class="services">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Services</h2>
-                </div>
-                <div class="row">
-                    @if (!empty($services))
-                        @foreach ($services as $service)
-                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch icon-box-wrapper" data-aos="zoom-in">
-                                <div class="icon-box z-hover">
-                                    <div class="icon">
-                                        <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174">
-                                            </path>
-                                        </svg>
-                                        <i class="{{$service->icon}}"></i>
+            <!-- ======= Services Section ======= -->
+            <section id="services" class="services">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Services</h2>
+                    </div>
+                    <div class="row">
+                        @if (!empty($services))
+                            @foreach ($services as $service)
+                                <div class="col-lg-4 col-md-6 d-flex align-items-stretch icon-box-wrapper"
+                                    data-aos="zoom-in">
+                                    <div class="icon-box z-hover">
+                                        <div class="icon">
+                                            <svg width="100" height="100" viewBox="0 0 600 600"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke="none" stroke-width="0" fill="#f5f5f5"
+                                                    d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174">
+                                                </path>
+                                            </svg>
+                                            <i class="{{ $service->icon }}"></i>
+                                        </div>
+                                        <h4><a href="">{{ $service->title }}</a></h4>
+                                        <p>{{ $service->details }}</p>
                                     </div>
-                                    <h4><a href="">{{$service->title}}</a></h4>
-                                    <p>{{$service->details}}</p>
                                 </div>
-                            </div>
-                        @endforeach
-                    @endif
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
-            </div>
-        </section><!-- End Services Section -->
+            </section><!-- End Services Section -->
         @endif
 
         @if ($portfolioConfig['visibility']['contact'])
-        <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
-            <div class="container" data-aos="zoom-in">
-                <div class="section-title">
-                    <h2>Contact</h2>
-                </div>
-                <div class="row mt-1">
-                    <div class="col-lg-4">
-                        <div class="info">
-                            @if ($about->phone && $about->phone !== '')
-                                <div class="phone">
-                                    <i class='bx bxs-phone'></i>
-                                    <h4>Call:</h4>
-                                    <p>{{$about->phone}}</p>
+            <!-- ======= Contact Section ======= -->
+            <section id="contact" class="contact">
+                <div class="container" data-aos="zoom-in">
+                    <div class="section-title">
+                        <h2>Contact</h2>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-lg-4">
+                            <div class="info">
+                                @if ($about->phone && $about->phone !== '')
+                                    <div class="phone">
+                                        <i class='bx bxs-phone'></i>
+                                        <h4>Call:</h4>
+                                        <p>{{ $about->phone }}</p>
+                                    </div>
+                                @endif
+                                @if ($about->email && $about->email !== '')
+                                    <div class="email">
+                                        <i class='bx bxs-envelope'></i>
+                                        <h4>Email:</h4>
+                                        <p>{{ $about->email }}</p>
+                                    </div>
+                                @endif
+                                @if ($about->address && $about->address !== '')
+                                    <div class="address">
+                                        <i class='bx bx-current-location'></i>
+                                        <h4>Address:</h4>
+                                        <p>{{ $about->address }}</p>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-lg-8 mt-5 mt-lg-0">
+                            <form action="forms/contact.php" method="post" id="contact-me-form" role="form"
+                                class="php-email-form">
+                                @csrf
+                                <div class="form-row">
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" name="name" class="form-control" id="name"
+                                            placeholder="Your Name" data-rule="required"
+                                            data-msg="Please enter your name" />
+                                        <div class="validate"></div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="email" class="form-control" name="email" id="email"
+                                            placeholder="Your Email" data-rule="email"
+                                            data-msg="Please enter a valid email" />
+                                        <div class="validate"></div>
+                                    </div>
                                 </div>
-                            @endif
-                            @if ($about->email && $about->email !== '')
-                                <div class="email">
-                                    <i class='bx bxs-envelope' ></i>
-                                    <h4>Email:</h4>
-                                    <p>{{$about->email}}</p>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="subject" id="subject"
+                                        placeholder="Subject" data-rule="required" data-msg="Please enter subject" />
+                                    <div class="validate"></div>
                                 </div>
-                            @endif
-                            @if ($about->address && $about->address !== '')
-                                <div class="address">
-                                    <i class='bx bx-current-location' ></i>
-                                    <h4>Address:</h4>
-                                    <p>{{$about->address}}</p>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="body" id="body" rows="5" data-rule="required"
+                                        data-msg="Please write something" placeholder="Body"></textarea>
+                                    <div class="validate"></div>
                                 </div>
-                            @endif
+                                <div class="text-center"><button type="submit" class="submit-button">Send
+                                        Message</button></div>
+                            </form>
                         </div>
                     </div>
-                    <div class="col-lg-8 mt-5 mt-lg-0">
-                        <form action="forms/contact.php" method="post" id="contact-me-form" role="form" class="php-email-form">
-                            @csrf
-                            <div class="form-row">
-                                <div class="col-md-6 form-group">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="required" data-msg="Please enter your name" />
-                                    <div class="validate"></div>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                                    <div class="validate"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="required" data-msg="Please enter subject" />
-                                <div class="validate"></div>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" name="body" id="body" rows="5" data-rule="required" data-msg="Please write something" placeholder="Body"></textarea>
-                                <div class="validate"></div>
-                            </div>
-                            <div class="text-center"><button type="submit" class="submit-button">Send Message</button></div>
-                        </form>
-                    </div>
                 </div>
-            </div>
-        </section><!-- End Contact Section -->
+            </section><!-- End Contact Section -->
         @endif
     </main><!-- End #main -->
 
     @if ($portfolioConfig['visibility']['footer'])
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-        <div class="container">
-            <h3>{{$about->name}}</h3>
-            @if ($about->social_links)
-                <div class="social-links">
-                    @foreach (json_decode($about->social_links) as $social)
-                        <a href="{{$social->link}}" target=="_blank" class="social-icon">
-                            <i class="{{$social->iconClass}}"></i>
-                        </a>
-                    @endforeach
+        <!-- ======= Footer ======= -->
+        <footer id="footer">
+            <div class="container">
+                <h3>{{ $about->name }}</h3>
+                @if ($about->social_links)
+                    <div class="social-links">
+                        @foreach (json_decode($about->social_links) as $social)
+                            <a href="{{ $social->link }}" target=="_blank" class="social-icon">
+                                <i class="{{ $social->iconClass }}"></i>
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
+                <div class="copyright">
+                    ©{{ now()->year }} All rights reserved.
                 </div>
-            @endif
-            <div class="copyright">
-                ©{{ now()->year }} All rights reserved.
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: [license-url] -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ -->
+                    Designed by <a href="https://github.com/john-muinde/" target="_blank">John Muinde</a>
+                </div>
             </div>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: [license-url] -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
-        </div>
-    </footer><!-- End Footer -->
+        </footer><!-- End Footer -->
     @else
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="py-1">
-        <div class="container">
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: [license-url] -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        <!-- ======= Footer ======= -->
+        <footer id="footer" class="py-1">
+            <div class="container">
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: [license-url] -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ -->
+                    Designed by <a href="https://github.com/john-muinde/" target="_blank">John Muinde</a>
+                </div>
             </div>
-        </div>
-    </footer><!-- End Footer -->
+        </footer><!-- End Footer -->
     @endif
 
     <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
@@ -421,8 +443,8 @@
     <script>
         $(function() {
             $('.lazy').lazy();
-            
-            @if($about->taglines)
+
+            @if ($about->taglines)
                 if ($('.typed').length) {
                     new Typed('.typed', {
                         strings: {!! json_encode(json_decode($about->taglines)) !!},
@@ -450,8 +472,7 @@
                         required: true
                     }
                 },
-                submitHandler: function(form, event)
-                {
+                submitHandler: function(form, event) {
                     const button = $('#contact-me-form #submit');
 
                     button.attr('disabled', true);
@@ -463,13 +484,14 @@
                         url: '{!! route('contact-me') !!}',
                         dataType: 'json',
                         data: $('#contact-me-form').serialize(),
-                        type:'post',
+                        type: 'post',
                         success: function(response) {
                             if (response.status === 400) {
                                 var errorArray = response.payload;
-                                $.each( errorArray, function( key, errors ) {
-                                    $.each( errors, function( key2, errorMessage ) {
-                                        showNotification( errorMessage, 'error', false);
+                                $.each(errorArray, function(key, errors) {
+                                    $.each(errors, function(key2, errorMessage) {
+                                        showNotification(errorMessage,
+                                            'error', false);
                                     });
                                 });
                             } else if (response.status !== 200) {
@@ -479,7 +501,7 @@
                                 $('#contact-me-form').trigger('reset');
                             }
                         },
-                        error: function (jqXHR, exception) {
+                        error: function(jqXHR, exception) {
                             console.log(jqXHR);
                         },
                         complete: function(data) {
@@ -494,7 +516,7 @@
                     });
                 }
             });
-            
+
             function showNotification(message = 'Something went wrong', type = 'error', sticky = false) {
                 iziToast.show({
                     title: '',
@@ -509,14 +531,15 @@
                     messageColor: type === 'success' ? '#00ffb8' : '#ffafb4',
                     icon: type === 'success' ? 'fas fa-check' : 'fas fa-times-circle'
                 });
-            }    
+            }
         });
     </script>
     @if (!empty($portfolioConfig['script']['footer']) && $portfolioConfig['script']['footer'] != '')
         <script>
-            {!!$portfolioConfig['script']['footer']!!}
+            {!! $portfolioConfig['script']['footer'] !!}
         </script>
     @endif
     @include('common.pixelTracking')
 </body>
+
 </html>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\CoreConstants;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 if (env('APP_ENV') !== 'production') {
