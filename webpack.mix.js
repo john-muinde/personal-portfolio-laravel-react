@@ -1,5 +1,7 @@
-const mix = require('laravel-mix');
-const ESLintPlugin = require('eslint-webpack-plugin');
+const mix = require("laravel-mix");
+const ESLintPlugin = require("eslint-webpack-plugin");
+const webpack = require("webpack");
+
 
 /*
  |--------------------------------------------------------------------------
@@ -19,28 +21,37 @@ mix.webpackConfig({
         rules: [
             {
                 test: /\.less$/,
-                loader: 'less-loader',
+                loader: "less-loader",
                 options: {
                     lessOptions: {
                         javascriptEnabled: true,
-                    }
-                }
-            }
-        ]
+                    },
+                },
+            },
+        ],
     },
     plugins: [
         new ESLintPlugin({
             extensions: [`js`, `jsx`],
-            exclude: [
-                'node_modules'
-            ],
-        })
+            exclude: ["node_modules"],
+        }),
+        new webpack.DefinePlugin({
+            "process.env.NODE_ENV": JSON.stringify(
+                process.env.NODE_ENV || "development"
+            ),
+        }),
     ],
 });
 
-mix.js('resources/js/client/admin/roots/app.js', 'public/js/client/admin/roots')
-    .js('resources/js/client/frontend/roots/projects.js', 'public/js/client/frontend/roots/projects.js')
-    .js('resources/js/client/frontend/roots/error.js', 'public/js/client/frontend/roots/error.js')
+mix.js("resources/js/client/admin/roots/app.js", "public/js/client/admin/roots")
+    .js(
+        "resources/js/client/frontend/roots/projects.js",
+        "public/js/client/frontend/roots/projects.js"
+    )
+    .js(
+        "resources/js/client/frontend/roots/error.js",
+        "public/js/client/frontend/roots/error.js"
+    )
     .react();
 
 if (mix.inProduction()) {

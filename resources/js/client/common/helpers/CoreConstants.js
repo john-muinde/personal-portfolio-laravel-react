@@ -10,10 +10,10 @@ const CoreConstants = {
     STATUS_CODE_ERROR: 500,
 
     //custom error status
-    TOKEN_INVALID: 'token_invalid',
-    TOKEN_EXPIRED: 'token_expired',
-    TOKEN_BLACKLISTED: 'token_blacklisted',
-    TOKEN_NOT_FOUND: 'token_not_found',
+    TOKEN_INVALID: "token_invalid",
+    TOKEN_EXPIRED: "token_expired",
+    TOKEN_BLACKLISTED: "token_blacklisted",
+    TOKEN_NOT_FOUND: "token_not_found",
 
     settings: {
         SITE_NAME: 1,
@@ -48,7 +48,7 @@ const CoreConstants = {
         META_IMAGE: 18,
         VISIBILITY_CV: 19,
         VISIBILITY_SKILL_PROFICIENCY: 20,
-    }
-}
+    },
+};
 
 export default CoreConstants;

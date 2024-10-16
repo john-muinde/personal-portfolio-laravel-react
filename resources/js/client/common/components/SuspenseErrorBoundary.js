@@ -1,5 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import { ErrorBoundaryFallbackUI } from "../../common/components/ErrorBoundaryFallbackUI";
 
 /**
  * SuspenseErrorBoundary component to catch errors
@@ -7,25 +8,29 @@ import PropTypes from 'prop-types';
 class SuspenseErrorBoundary extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { hasError: false };
+        this.state = { hasError: false, error: null };
     }
 
-    // eslint-disable-next-line no-unused-vars
     static getDerivedStateFromError(error) {
         // Update state so the next render will show the fallback UI.
-        return { hasError: true };
+        return { hasError: true, error };
     }
 
-    // eslint-disable-next-line no-unused-vars
     componentDidCatch(error, errorInfo) {
         // You can also log the error to an error reporting service
-        // logErrorToMyService(error, errorInfo);
+        console.error("Uncaught error:", error, errorInfo);
     }
 
     render() {
         if (this.state.hasError) {
-            // You can render any custom fallback UI
-            return this.props.fallback ? this.props.fallback : <h1>Something went wrong.</h1>;
+            // Use ErrorBoundaryFallbackUI if no fallback is provided
+            return this.props.fallback ? (
+                React.cloneElement(this.props.fallback, {
+                    error: this.state.error,
+                })
+            ) : (
+                <ErrorBoundaryFallbackUI error={this.state.error} />
+            );
         }
 
         return this.props.children;
@@ -34,7 +39,7 @@ class SuspenseErrorBoundary extends React.Component {
 
 SuspenseErrorBoundary.propTypes = {
     fallback: PropTypes.node,
-    children: PropTypes.node
-}
+    children: PropTypes.node,
+};
 
 export default SuspenseErrorBoundary;
