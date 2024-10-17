@@ -35,10 +35,8 @@ const ErrorDetails = styled.pre`
     overflow-x: auto;
 `;
 
-const isDevelopment =
-    typeof process !== "undefined" &&
-    process.env &&
-    (!process.env.NODE_ENV || process.env.NODE_ENV === "development");
+// Check for development environment using window.__DEV__ which we'll define in webpack mix
+const isDevelopment = window.__DEV__;
 
 /**
  * Simple Error boundary fallback UI to display when error occurs
@@ -50,17 +48,13 @@ export const SimpleErrorBoundaryFallbackUI = () => {
                 <code>Something went wrong!</code>
             </ErrorTitle>
 
-            {
-                // eslint-disable-next-line no-undef
-                (!process.env.NODE_ENV ||
-                    process.env.NODE_ENV === "development") && (
-                    <ErrorSubTitle>
-                        <code>
-                            Open <strong>console</strong> for more details.
-                        </code>
-                    </ErrorSubTitle>
-                )
-            }
+            {isDevelopment && (
+                <ErrorSubTitle>
+                    <code>
+                        Open <strong>console</strong> for more details.
+                    </code>
+                </ErrorSubTitle>
+            )}
         </ErrorWrapper>
     );
 };

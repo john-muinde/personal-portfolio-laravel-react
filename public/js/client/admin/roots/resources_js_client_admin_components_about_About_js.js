@@ -4846,14 +4846,14 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var pulseAnimation = (0,styled_components__WEBPACK_IMPORTED_MODULE_10__.keyframes)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n0%,\n100% {\n-webkit-transform: translateX(0);\n        transform: translateX(0);\n}\n10%,\n30%,\n50%,\n70% {\n-webkit-transform: translateX(-10px);\n        transform: translateX(-10px);\n}\n20%,\n40%,\n60% {\n-webkit-transform: translateX(10px);\n        transform: translateX(10px);\n}\n80% {\n-webkit-transform: translateX(8px);\n        transform: translateX(8px);\n}\n90% {\n-webkit-transform: translateX(-8px);\n        transform: translateX(-8px);\n}\n"])));
-var AnimatedDiv = styled_components__WEBPACK_IMPORTED_MODULE_10__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nanimation: ", ";\n"])), function (props) {
-  return props.animate ? (0,styled_components__WEBPACK_IMPORTED_MODULE_10__.css)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["", " 2s ease-in-out infinite;"])), pulseAnimation) : '';
+var AnimatedDiv = styled_components__WEBPACK_IMPORTED_MODULE_10__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n    animation: ", ";\n"])), function (props) {
+  return props.animate ? (0,styled_components__WEBPACK_IMPORTED_MODULE_10__.css)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n                  ", " 2s ease-in-out infinite;\n              "])), pulseAnimation) : "";
 });
 var Title = antd__WEBPACK_IMPORTED_MODULE_11__["default"].Title,
     Text = antd__WEBPACK_IMPORTED_MODULE_11__["default"].Text,
     Paragraph = antd__WEBPACK_IMPORTED_MODULE_11__["default"].Paragraph;
 var Item = antd__WEBPACK_IMPORTED_MODULE_12__["default"].Item;
-var EditSpan = styled_components__WEBPACK_IMPORTED_MODULE_10__["default"].span(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\ni:hover, svg:hover {\n\ttransform: rotate(180deg);\n}\ni, svg {\n    text-decoration: none;\n    width: 20px;\n    height: 20px;\n    font-size: 10px;\n    line-height: 20px;\n    text-align: center;\n    border-radius: 50%;\n    padding: 0;\n    border: 0;\n    cursor: pointer;\n    background-color: #ddd;\n    margin-left: 5px;\n    opacity: 0.7;\n    flex-shrink: 0;\n    -webkit-transition: all 0.3s ease;\n    -moz-transition: all 0.3s ease;\n    -o-transition: all 0.3s ease;\n    transition: all 0.3s ease;\n}\n"])));
+var EditSpan = styled_components__WEBPACK_IMPORTED_MODULE_10__["default"].span(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n    i:hover,\n    svg:hover {\n        transform: rotate(180deg);\n    }\n    i,\n    svg {\n        text-decoration: none;\n        width: 20px;\n        height: 20px;\n        font-size: 10px;\n        line-height: 20px;\n        text-align: center;\n        border-radius: 50%;\n        padding: 0;\n        border: 0;\n        cursor: pointer;\n        background-color: #ddd;\n        margin-left: 5px;\n        opacity: 0.7;\n        flex-shrink: 0;\n        -webkit-transition: all 0.3s ease;\n        -moz-transition: all 0.3s ease;\n        -o-transition: all 0.3s ease;\n        transition: all 0.3s ease;\n    }\n"])));
 
 var About = function About() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
@@ -4861,27 +4861,27 @@ var About = function About() {
       avatar = _useState2[0],
       setAvatar = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
       name = _useState4[0],
       setName = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
       email = _useState6[0],
       setEmail = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState8 = _slicedToArray(_useState7, 2),
       phone = _useState8[0],
       setPhone = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState10 = _slicedToArray(_useState9, 2),
       address = _useState10[0],
       setAddress = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState12 = _slicedToArray(_useState11, 2),
       description = _useState12[0],
       setDescription = _useState12[1];
@@ -4955,7 +4955,7 @@ var About = function About() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     console.log(typedElement);
     var options = {
-      strings: taglines && taglines.length ? taglines : [''],
+      strings: taglines && taglines.length ? taglines : [""],
       typeSpeed: 70,
       backSpeed: 40,
       smartBackspace: true,
@@ -5021,20 +5021,20 @@ var About = function About() {
   };
 
   var focusInput = function focusInput(input) {
-    if (input === 'name') {
+    if (input === "name") {
       nameInput.current.focus();
-    } else if (input === 'email') {
+    } else if (input === "email") {
       emailInput.current.focus();
-    } else if (input === 'phone') {
+    } else if (input === "phone") {
       phoneInput.current.focus();
-    } else if (input === 'address') {
+    } else if (input === "address") {
       addressInput.current.focus();
-    } else if (input === 'description') {
+    } else if (input === "description") {
       descriptionInput.current.focus();
-    } else if (input === 'taglines') {
+    } else if (input === "taglines") {
       setFocusTaglines(true);
       taglinesInput.current.focus();
-    } else if (input === 'socialLinks') {
+    } else if (input === "socialLinks") {
       setFocusSocialLinks(true);
       socialLinksInput.current.focus();
     }
@@ -5054,7 +5054,7 @@ var About = function About() {
         social_links: socialLinks
       }).then(function (response) {
         _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].handleSuccessResponse(response, function () {
-          _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].showNotification(response.data.message, 'success');
+          _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].showNotification(response.data.message, "success");
         });
       })["catch"](function (error) {
         _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].handleException(error);
@@ -5062,20 +5062,20 @@ var About = function About() {
         setLoading(false);
       });
     })["catch"](function (info) {
-      console.log('Validate Failed:', info);
+      console.log("Validate Failed:", info);
     });
   };
 
   var onFormValuesChange = function onFormValuesChange(changedValues) {
-    if (typeof changedValues.name !== 'undefined') {
+    if (typeof changedValues.name !== "undefined") {
       setName(changedValues.name);
-    } else if (typeof changedValues.email !== 'undefined') {
+    } else if (typeof changedValues.email !== "undefined") {
       setEmail(changedValues.email);
-    } else if (typeof changedValues.phone !== 'undefined') {
+    } else if (typeof changedValues.phone !== "undefined") {
       setPhone(changedValues.phone);
-    } else if (typeof changedValues.address !== 'undefined') {
+    } else if (typeof changedValues.address !== "undefined") {
       setAddress(changedValues.address);
-    } else if (typeof changedValues.description !== 'undefined') {
+    } else if (typeof changedValues.description !== "undefined") {
       setDescription(changedValues.description);
     }
   };
@@ -5083,7 +5083,7 @@ var About = function About() {
   var taglineNewHandler = function taglineNewHandler() {
     var array = _toConsumableArray(taglines);
 
-    array.push('');
+    array.push("");
     setTagLines(array);
   };
 
@@ -5159,15 +5159,15 @@ var About = function About() {
                 direction: "vertical",
                 align: "center",
                 style: {
-                  width: '100%'
+                  width: "100%"
                 },
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_uploader_FileUploader__WEBPACK_IMPORTED_MODULE_4__["default"], {
                   allowRevert: true,
                   isAvatar: true,
-                  previewAvatar: avatar && _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].backend + '/' + avatar,
+                  previewAvatar: avatar && _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].backend + "/" + avatar,
                   acceptedFileTypes: "image/*",
                   allowMultiple: false,
-                  name: 'file',
+                  name: "file",
                   serverUrl: _common_helpers_Routes__WEBPACK_IMPORTED_MODULE_2__["default"].api.admin.avatar,
                   afterUploadCallback: avatarUploadCallback,
                   afterRevertCallback: avatarUploadCallback
@@ -5175,7 +5175,7 @@ var About = function About() {
                   level: 4,
                   children: [name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(EditSpan, {
                     onClick: function onClick() {
-                      focusInput('name');
+                      focusInput("name");
                     },
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
                       className: "fa fa-pencil-alt",
@@ -5189,7 +5189,7 @@ var About = function About() {
                 title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                   children: ["Email", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(EditSpan, {
                     onClick: function onClick() {
-                      focusInput('email');
+                      focusInput("email");
                     },
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
                       className: "fa fa-pencil-alt",
@@ -5207,7 +5207,7 @@ var About = function About() {
                 title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                   children: ["Phone", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(EditSpan, {
                     onClick: function onClick() {
-                      focusInput('phone');
+                      focusInput("phone");
                     },
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
                       className: "fa fa-pencil-alt",
@@ -5225,7 +5225,7 @@ var About = function About() {
                 title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                   children: ["Address", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(EditSpan, {
                     onClick: function onClick() {
-                      focusInput('address');
+                      focusInput("address");
                     },
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
                       className: "fa fa-pencil-alt",
@@ -5243,7 +5243,7 @@ var About = function About() {
                 title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                   children: ["Description", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(EditSpan, {
                     onClick: function onClick() {
-                      focusInput('description');
+                      focusInput("description");
                     },
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
                       className: "fa fa-pencil-alt",
@@ -5254,7 +5254,7 @@ var About = function About() {
                 description: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(Paragraph, {
                   type: "secondary",
                   style: {
-                    textAlign: 'justify'
+                    textAlign: "justify"
                   },
                   children: description
                 })
@@ -5264,7 +5264,7 @@ var About = function About() {
                 title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                   children: ["Taglines", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(EditSpan, {
                     onClick: function onClick() {
-                      focusInput('taglines');
+                      focusInput("taglines");
                     },
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
                       className: "fa fa-pencil-alt",
@@ -5283,7 +5283,7 @@ var About = function About() {
                 title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                   children: ["Social Links", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(EditSpan, {
                     onClick: function onClick() {
-                      focusInput('socialLinks');
+                      focusInput("socialLinks");
                     },
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
                       className: "fa fa-pencil-alt",
@@ -5312,10 +5312,10 @@ var About = function About() {
                 }),
                 description: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_uploader_FileUploader__WEBPACK_IMPORTED_MODULE_4__["default"], {
                   allowRevert: false,
-                  previewFile: cv !== null ? _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].backend + '/' + cv : null,
-                  acceptedFileTypes: ['text/plain', 'application/pdf', 'application/doc', 'application/rtf'],
+                  previewFile: cv !== null ? _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].backend + "/" + cv : null,
+                  acceptedFileTypes: ["text/plain", "application/pdf", "application/doc", "application/rtf"],
                   allowMultiple: false,
-                  name: 'file',
+                  name: "file",
                   serverUrl: _common_helpers_Routes__WEBPACK_IMPORTED_MODULE_2__["default"].api.admin.cv,
                   labelIdle: 'Drag & Drop your CV or <span class="filepond--label-action">Browse</span>',
                   afterUploadCallback: cvUploadCallback,
@@ -5329,10 +5329,10 @@ var About = function About() {
                 }),
                 description: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_uploader_FileUploader__WEBPACK_IMPORTED_MODULE_4__["default"], {
                   allowRevert: false,
-                  previewFile: cover !== null ? _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].backend + '/' + cover : null,
+                  previewFile: cover !== null ? _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].backend + "/" + cover : null,
                   acceptedFileTypes: "image/*",
                   allowMultiple: false,
-                  name: 'file',
+                  name: "file",
                   serverUrl: _common_helpers_Routes__WEBPACK_IMPORTED_MODULE_2__["default"].api.admin.cover,
                   labelIdle: 'Drag & Drop your cover or <span class="filepond--label-action">Browse</span>',
                   afterUploadCallback: coverUploadCallback,
@@ -5369,11 +5369,11 @@ var About = function About() {
                 children: "Full Name"
               }),
               messageVariables: {
-                label: 'Name'
+                label: "Name"
               },
               rules: [{
                 required: true,
-                message: 'Please enter your name'
+                message: "Please enter your name"
               }],
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_17__["default"], {
                 ref: nameInput,
@@ -5386,14 +5386,14 @@ var About = function About() {
                 children: "Email"
               }),
               messageVariables: {
-                label: 'Email'
+                label: "Email"
               },
               rules: [{
                 required: true,
-                message: 'Please enter your email'
+                message: "Please enter your email"
               }, {
-                type: 'email',
-                message: 'Invalid email address'
+                type: "email",
+                message: "Invalid email address"
               }],
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_17__["default"], {
                 ref: emailInput,
@@ -5406,7 +5406,7 @@ var About = function About() {
                 children: "Phone"
               }),
               messageVariables: {
-                label: 'Phone'
+                label: "Phone"
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_17__["default"], {
                 ref: phoneInput,
@@ -5419,7 +5419,7 @@ var About = function About() {
                 children: "Address"
               }),
               messageVariables: {
-                label: 'Address'
+                label: "Address"
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_17__["default"], {
                 ref: addressInput,
@@ -5432,11 +5432,11 @@ var About = function About() {
                 children: "Description"
               }),
               messageVariables: {
-                label: 'Description'
+                label: "Description"
               },
               rules: [{
                 required: true,
-                message: 'Please enter your description'
+                message: "Please enter your description"
               }],
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_17__["default"].TextArea, {
                 rows: "4",
@@ -5462,7 +5462,7 @@ var About = function About() {
                   size: "small",
                   bordered: true,
                   children: taglines.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(rc_queue_anim__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                    type: ['right', 'left'],
+                    type: ["right", "left"],
                     leaveReverse: true,
                     children: taglines.map(function (item, index) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
@@ -5471,13 +5471,13 @@ var About = function About() {
                             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
                               className: "fas fa-times",
                               style: {
-                                color: 'red'
+                                color: "red"
                               },
                               onClick: function onClick() {
                                 return taglineDeleteHandler(index);
                               }
                             })
-                          }, 'delete')],
+                          }, "delete")],
                           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(Item.Meta, {
                             description: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_17__["default"], {
                               placeholder: "Enter tag line",
@@ -5515,7 +5515,7 @@ var About = function About() {
                   size: "small",
                   bordered: true,
                   children: socialLinks.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(rc_queue_anim__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                    type: ['right', 'left'],
+                    type: ["right", "left"],
                     leaveReverse: true,
                     children: socialLinks.map(function (item, index) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
@@ -5527,17 +5527,17 @@ var About = function About() {
                                 return socialLinkEditHandler(index);
                               }
                             })
-                          }, 'edit'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(EditSpan, {
+                          }, "edit"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(EditSpan, {
                             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
                               className: "fas fa-times",
                               style: {
-                                color: 'red'
+                                color: "red"
                               },
                               onClick: function onClick() {
                                 return socialLinkDeleteHandler(index);
                               }
                             })
-                          }, 'delete')],
+                          }, "delete")],
                           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(Item.Meta, {
                             description: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("a", {
                               href: item.link,
@@ -5564,7 +5564,7 @@ var About = function About() {
                 children: "CV"
               }),
               children: cv ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("a", {
-                href: _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].backend + '/' + cv,
+                href: _common_helpers_Utils__WEBPACK_IMPORTED_MODULE_3__["default"].backend + "/" + cv,
                 download: true,
                 target: "_blank",
                 rel: "noreferrer",
@@ -5573,10 +5573,10 @@ var About = function About() {
                   icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_20__["default"], {}),
                   children: "Download"
                 })
-              }) : ''
+              }) : ""
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"].Item, {
               style: {
-                textAlign: 'center'
+                textAlign: "center"
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_19__["default"], {
                 type: "primary",
@@ -5589,7 +5589,7 @@ var About = function About() {
         })
       })]
     }), socialLinkPopupVisible && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_SocialLinkPopup__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      title: 'Social Link',
+      title: "Social Link",
       socialLink: socialLinkToEdit,
       visible: socialLinkPopupVisible,
       handleCancel: function handleCancel() {
@@ -5602,7 +5602,7 @@ var About = function About() {
           iconClass: newSocialLink.iconClass
         };
 
-        if (typeof newSocialLink.index !== 'undefined' && newSocialLink.index !== null) {
+        if (typeof newSocialLink.index !== "undefined" && newSocialLink.index !== null) {
           socialLinks[newSocialLink.index] = newObject;
         } else {
           var array = _toConsumableArray(socialLinks);

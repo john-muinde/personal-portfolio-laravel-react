@@ -2,18 +2,6 @@ const mix = require("laravel-mix");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const webpack = require("webpack");
 
-
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel applications. By default, we are compiling the CSS
- | file for the application as well as bundling up all the JS files.
- |
- */
-
 mix.disableNotifications();
 
 mix.webpackConfig({
@@ -35,9 +23,12 @@ mix.webpackConfig({
             extensions: [`js`, `jsx`],
             exclude: ["node_modules"],
         }),
+        // Add the DefinePlugin configuration here
         new webpack.DefinePlugin({
+            "window.__DEV__": !mix.inProduction(),
+            // Also define process.env.NODE_ENV for broader compatibility
             "process.env.NODE_ENV": JSON.stringify(
-                process.env.NODE_ENV || "development"
+                mix.inProduction() ? "production" : "development"
             ),
         }),
     ],
