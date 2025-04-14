@@ -118,15 +118,3 @@ For more info, visit the <a href="http://arifszn.github.io/ezfolio">docs</a>.
 ## Contributing
 
 Any contributors who want to make this project better can make contributions, which will be greatly appreciated. Check out our <a href="https://github.com/arifszn/ezfolio/blob/main/CONTRIBUTING.md">contribution guide</a> for more info.
-
-
-## Support
-
-<a href="https://www.buymeacoffee.com/arifszn" target="_blank">
-  <img src="https://raw.githubusercontent.com/arifszn/arifszn/main/assets/bmc-button.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >
-</a>
-
-
-## License
-
-**Ezfolio** is licensed under the [MIT License](https://github.com/arifszn/ezfolio/blob/main/LICENSE).
