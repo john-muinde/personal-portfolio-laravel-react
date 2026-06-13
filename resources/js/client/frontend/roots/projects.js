@@ -7,22 +7,33 @@ import Routes from '../../common/helpers/Routes';
 import HTTP from '../../common/helpers/HTTP';
 import Utils from '../../common/helpers/Utils';
 
-const accentColor = document.querySelector('[data-accentcolor]') ? document.querySelector('[data-accentcolor]').dataset.accentcolor : null;
-const demoMode = document.querySelector('[data-demomode]') ? document.querySelector('[data-demomode]').dataset.demomode : false;
+const rootEl = document.getElementById('react-project-root');
+const accentColor = rootEl ? rootEl.dataset.accentcolor : null;
+const demoMode = rootEl ? rootEl.dataset.demomode : false;
+const inlineProjects = (rootEl && rootEl.dataset.projects) ? JSON.parse(rootEl.dataset.projects) : null;
 
 const thumbnailStyle = {
-    height: '150px',
+    height: '160px',
     width: '100%',
     transition: '0.3s ease',
-    // filter: 'opacity(0.8)',
     objectFit: 'cover'
 }
 
+function extractCategories(projects) {
+    const cats = [];
+    projects.forEach(row => {
+        JSON.parse(row.categories).forEach(cat => cats.push(cat));
+    });
+    return [...new Set(cats)];
+}
+
 function App() {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(inlineProjects === null);
     const [modalVisible, setModalVisible] = useState(false);
-    const [categories, setCategories] = useState([]);
-    const [data, setData] = useState([]);
+    const [categories, setCategories] = useState(
+        inlineProjects ? extractCategories(inlineProjects) : []
+    );
+    const [data, setData] = useState(inlineProjects || []);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [selectedProject, setSelectedProject] = useState(null);
 
@@ -31,7 +42,9 @@ function App() {
             Utils.changeAccentColor(accentColor);
         }
 
-        loadData();
+        if (inlineProjects === null) {
+            loadData();
+        }
 
         if (demoMode) {
             notification.open({
@@ -61,31 +74,17 @@ function App() {
 
     const loadData = () => {
         setLoading(true);
-
-        HTTP.get(Routes.api.frontend.projects, {
-            isPrivate: false
-        })
+        HTTP.get(Routes.api.frontend.projects, { isPrivate: false })
         .then(response => {
             Utils.handleSuccessResponse(response, () => {
                 setData(response.data.payload);
-
                 if (response.data.payload.length) {
-                    let newCategories = [...categories];
-                    response.data.payload.forEach(row => {
-                        JSON.parse(row.categories).map((category) => {
-                            newCategories.push(category);
-                        })
-                    });
-                    setCategories([...new Set(newCategories)]);
+                    setCategories(extractCategories(response.data.payload));
                 }
-            })
+            });
         })
-        .catch(error => {
-            Utils.handleException(error);
-        })
-        .finally(() => {
-            setLoading(false);
-        });
+        .catch(error => Utils.handleException(error))
+        .finally(() => setLoading(false));
     }
 
     return (
@@ -98,11 +97,7 @@ function App() {
                                 (categories.length !== 0) && (
                                     <div data-aos="zoom-in">
                                         <Radio.Group onChange={(e) => {
-                                            if (typeof e.target.value === 'undefined') {
-                                                setSelectedCategory(null);
-                                            } else {
-                                                setSelectedCategory(e.target.value);
-                                            }
+                                            setSelectedCategory(typeof e.target.value === 'undefined' ? null : e.target.value);
                                         }}>
                                             <Radio.Button>All</Radio.Button>
                                             {
@@ -116,19 +111,22 @@ function App() {
                             }
                         </Col>
                         <Col span={24} className="text-center">
-                            <Row justify='center' gutter={32}>
+                            <Row justify='center' gutter={[24, 24]}>
                                 {
-                                    data.filter(project => selectedCategory === null || (selectedCategory !== null && JSON.parse(project.categories).includes(selectedCategory))).map((item, index) => (
+                                    data.filter(project =>
+                                        selectedCategory === null ||
+                                        JSON.parse(project.categories).includes(selectedCategory)
+                                    ).map((item, index) => (
                                         <Col
                                             key={index}
                                             xl={6}
-                                            lg={6}
+                                            lg={8}
                                             md={12}
                                             sm={24}
                                             xs={24}
-                                            data-aos="fade-up" 
+                                            data-aos="fade-up"
+                                            data-aos-delay={index % 4 * 60}
                                             data-aos-anchor-placement="top-bottom"
-                                            style={{marginBottom: '24px'}}
                                         >
                                             <Card
                                                 onClick={() => {
@@ -136,30 +134,26 @@ function App() {
                                                     setModalVisible(true);
                                                 }}
                                                 loading={loading}
-                                                bodyStyle={{padding: '14px'}}
+                                                bodyStyle={{padding: '16px'}}
                                                 hoverable
-                                                className={'z-hover z-shadow'}
+                                                className={'z-shadow'}
                                                 bordered={false}
                                                 cover={
-                                                    <div style={{opacity: '0.7'}}>
-                                                        <Image
-                                                            width='100%'
-                                                            src={Utils.backend + '/' + item.thumbnail}
-                                                            style={thumbnailStyle}
-                                                            preview={false}
-                                                            placeholder={true}
-                                                        />
-                                                    </div>
+                                                    <Image
+                                                        width='100%'
+                                                        src={Utils.backend + '/' + item.thumbnail}
+                                                        style={thumbnailStyle}
+                                                        preview={false}
+                                                        placeholder={true}
+                                                    />
                                                 }
                                                 actions={[
-                                                    <React.Fragment key="view">
-                                                        See Details
-                                                    </React.Fragment>
+                                                    <span key="view" style={{fontSize: '13px', fontWeight: 500}}>
+                                                        View Details →
+                                                    </span>
                                                 ]}
                                             >
-                                                <Card.Meta
-                                                    title={item.title}
-                                                />
+                                                <Card.Meta title={item.title} />
                                             </Card>
                                         </Col>
                                     ))
@@ -175,11 +169,7 @@ function App() {
                         title={selectedProject ? selectedProject.title : ''}
                         project={selectedProject}
                         visible={modalVisible}
-                        handleCancel={
-                            () => {
-                                setModalVisible(false);
-                            }
-                        }
+                        handleCancel={() => setModalVisible(false)}
                     />
                 )
             }
@@ -188,10 +178,10 @@ function App() {
 }
 
 if (document.getElementById('react-project-root')) {
-   ReactDOM.render(
+    ReactDOM.render(
         <React.StrictMode>
             <App />
         </React.StrictMode>,
         document.getElementById('react-project-root')
-    ); 
+    );
 }

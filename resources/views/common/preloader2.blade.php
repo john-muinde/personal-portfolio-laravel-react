@@ -8,42 +8,30 @@
             bottom: 0;
             z-index: 9999;
             overflow: hidden;
-            background: #fff;
+            background: #0d1117;
         }
 
         #szn-preloader:before {
             content: "";
             position: fixed;
-            top: calc(50% - 30px);
-            left: calc(50% - 30px);
-            border: 6px solid var(--z-accent-color);
-            border-top-color: #fff;
-            border-bottom-color: #fff;
+            top: calc(50% - 20px);
+            left: calc(50% - 20px);
+            width: 40px;
+            height: 40px;
+            border: 2.5px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--z-accent-color, #0168fa);
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            -webkit-animation: animate-preloader 1s linear infinite;
-            animation: animate-preloader 1s linear infinite;
+            -webkit-animation: animate-preloader 0.7s linear infinite;
+            animation: animate-preloader 0.7s linear infinite;
         }
 
-        
         @-webkit-keyframes animate-preloader {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-
         @keyframes animate-preloader {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
-
 </div>

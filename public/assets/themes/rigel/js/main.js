@@ -7,13 +7,14 @@
 !(function ($) {
     "use strict";
 
-    // Preloader
-    $(window).on('load', function () {
+    // Preloader + AOS init on DOMContentLoaded — no image-load wait
+    $(document).ready(function () {
         if ($('#szn-preloader').length) {
-            $('#szn-preloader').delay(100).fadeOut('slow', function() {
+            $('#szn-preloader').fadeOut(250, function() {
                 $(this).remove();
             });
         }
+        aos_init();
     });
 
     // Smooth scroll for the navigation menu and links with .scrollto classes
@@ -127,7 +128,7 @@
         });
     }
 
-    // Porfolio isotope and filter
+    // Portfolio isotope and filter — needs window.load so images are sized
     $(window).on('load', function () {
         var portfolioIsotope = $('.portfolio-container').isotope({
             itemSelector: '.portfolio-item'
@@ -136,17 +137,8 @@
         $('#portfolio-flters li').on('click', function () {
             $("#portfolio-flters li").removeClass('filter-active');
             $(this).addClass('filter-active');
-
-            portfolioIsotope.isotope({
-                filter: $(this).data('filter')
-            });
-            aos_init();
+            portfolioIsotope.isotope({ filter: $(this).data('filter') });
         });
-
-
-        // Initiate aos_init() function
-        aos_init();
-
     });
 
 })(jQuery);

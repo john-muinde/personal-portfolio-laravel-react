@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             DB::statement('SET FOREIGN_KEY_CHECKS=0');
 
             // Truncate all tables, except migrations
-            $tables = Schema::getConnection()->getDoctrineSchemaManager()->listTableNames();
+            $tables = array_column(Schema::getTables(), 'name');
             foreach ($tables as $table) {
                 if ($table !== 'migrations') {
                     DB::table($table)->truncate();

@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use CoreConstants;
-use App\Models\Setting;
+use App\Helpers\CoreConstants;
 use App\Services\Contracts\AdminInterface;
 use App\Services\Contracts\SettingInterface;
 use DotenvEditor;
@@ -21,7 +20,7 @@ class AdminSeeder extends Seeder
     public function run()
     {
         try {
-            $adminService= resolve(AdminInterface::class);
+            $adminService = resolve(AdminInterface::class);
 
             $result = $adminService->handleSignup([
                 'email' => 'admin@admin.com',
@@ -90,7 +89,7 @@ class AdminSeeder extends Seeder
                                 $dir = 'assets/common/img/logo';
                             }
                             $leave_files = array('.gitkeep');
-                            
+
                             foreach (glob("$dir/*") as $file) {
                                 if (!in_array(basename($file), $leave_files)) {
                                     unlink($file);
@@ -98,9 +97,9 @@ class AdminSeeder extends Seeder
                             }
 
                             if (is_dir('public/assets/common/img/logo')) {
-                                copy('public/assets/common/default/logo/default.png', $dir.'/default.png');
+                                copy('public/assets/common/default/logo/default.png', $dir . '/default.png');
                             } else {
-                                copy('assets/common/default/logo/default.png', $dir.'/default.png');
+                                copy('assets/common/default/logo/default.png', $dir . '/default.png');
                             }
                         } catch (\Throwable $th) {
                             Log::error($th->getMessage());
@@ -121,7 +120,7 @@ class AdminSeeder extends Seeder
                                 $dir = 'assets/common/img/favicon';
                             }
                             $leave_files = array('.gitkeep');
-                            
+
                             foreach (glob("$dir/*") as $file) {
                                 if (!in_array(basename($file), $leave_files)) {
                                     unlink($file);
@@ -129,14 +128,14 @@ class AdminSeeder extends Seeder
                             }
 
                             if (is_dir('public/assets/common/img/favicon')) {
-                                copy('public/assets/common/default/favicon/default.png', $dir.'/default.png');
+                                copy('public/assets/common/default/favicon/default.png', $dir . '/default.png');
                             } else {
-                                copy('assets/common/default/favicon/default.png', $dir.'/default.png');
+                                copy('assets/common/default/favicon/default.png', $dir . '/default.png');
                             }
                         } catch (\Throwable $th) {
                             Log::error($th->getMessage());
                         }
-                        
+
                         $data = [
                             'setting_key' => CoreConstants::SETTING__FAVICON,
                             'setting_value' => 'assets/common/img/favicon/default.png',

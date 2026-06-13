@@ -11,6 +11,7 @@ use App\Services\Contracts\ProjectInterface;
 use App\Services\Contracts\ServiceInterface;
 use App\Services\Contracts\SkillInterface;
 use CoreConstants;
+use Illuminate\Support\Facades\Cache;
 use Log;
 use Validator;
 
@@ -29,68 +30,72 @@ class FrontendService implements FrontendInterface
     /**
      * Get all data for frontend
      *
+     * Cache key: 'portfolio_frontend_data' — cleared via Cache::forget() when admin saves any section.
+     *
      * @return array
      */
     public function getAllData()
     {
-        try {
-            $data = [];
+        return Cache::remember('portfolio_frontend_data', 1800, function () {
+            try {
+                $data = [];
 
-            //portfolio config
-            $result = resolve(PortfolioConfigInterface::class)->getAllConfigData();
-            if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
-                $data['portfolioConfig'] = $result['payload'];
-            }
+                //portfolio config
+                $result = resolve(PortfolioConfigInterface::class)->getAllConfigData();
+                if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
+                    $data['portfolioConfig'] = $result['payload'];
+                }
 
-            //about
-            $result = resolve(AboutInterface::class)->getAll();
-            if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
-                $data['about'] = $result['payload'];
-            }
+                //about
+                $result = resolve(AboutInterface::class)->getAll();
+                if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
+                    $data['about'] = $result['payload'];
+                }
 
-            //skill
-            $result = resolve(SkillInterface::class)->getAll();
-            if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
-                $data['skills'] = $result['payload'];
-            }
+                //skill
+                $result = resolve(SkillInterface::class)->getAll();
+                if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
+                    $data['skills'] = $result['payload'];
+                }
 
-            //education
-            $result = resolve(EducationInterface::class)->getAll();
-            if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
-                $data['education'] = $result['payload'];
-            }
+                //education
+                $result = resolve(EducationInterface::class)->getAll();
+                if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
+                    $data['education'] = $result['payload'];
+                }
 
-            //experiences
-            $result = resolve(ExperienceInterface::class)->getAll();
-            if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
-                $data['experiences'] = $result['payload'];
-            }
+                //experiences
+                $result = resolve(ExperienceInterface::class)->getAll();
+                if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
+                    $data['experiences'] = $result['payload'];
+                }
 
-            //projects
-            $result = resolve(ProjectInterface::class)->getAll();
-            if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
-                $data['projects'] = $result['payload'];
-            }
+                //projects
+                $result = resolve(ProjectInterface::class)->getAll();
+                if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
+                    $data['projects'] = $result['payload'];
+                }
 
-            //services
-            $result = resolve(ServiceInterface::class)->getAll();
-            if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
-                $data['services'] = $result['payload'];
+                //services
+                $result = resolve(ServiceInterface::class)->getAll();
+                if ($result['status'] === CoreConstants::STATUS_CODE_SUCCESS) {
+                    $data['services'] = $result['payload'];
+                }
+
+                return [
+                    'message' => 'Data is fetched successfully',
+                    'payload' => $data,
+                    'status' => CoreConstants::STATUS_CODE_SUCCESS
+                ];
+            } catch (\Throwable $th) {
+                Log::error($th->getMessage());
+                return [
+                    'message' => 'Something went wrong',
+                    'payload' => $th->getMessage(),
+                    'status'  => CoreConstants::STATUS_CODE_ERROR
+                ];
             }
-            
-            return [
-                'message' => 'Data is fetched successfully',
-                'payload' => $data,
-                'status' => CoreConstants::STATUS_CODE_SUCCESS
-            ];
-        } catch (\Throwable $th) {
-            Log::error($th->getMessage());
-            return [
-                'message' => 'Something went wrong',
-                'payload' => $th->getMessage(),
-                'status'  => CoreConstants::STATUS_CODE_ERROR
-            ];
-        }
+        });
     }
 
     /**

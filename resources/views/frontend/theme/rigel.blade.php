@@ -35,6 +35,11 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ Utils::getFavicon() }}">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@600;700;800&display=swap" rel="stylesheet">
+
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/common/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/common/lib/fontawesome/css/all.min.css') }}" rel="stylesheet">
@@ -47,8 +52,11 @@
     <link href="{{ asset('assets/themes/rigel/css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/themes/rigel/css/custom.css') }}" rel="stylesheet">
     <style>
+        html { scroll-behavior: smooth; }
+
         :root {
             --z-accent-color: {{ $accentColor }};
+            --z-accent-color-rgb: {{ $accentColorRGB }};
         }
 
         .bg-primary,
@@ -66,7 +74,7 @@
 
         .form-control:focus {
             border-color: rgba({{ $accentColorRGB }}, .5) !important;
-            box-shadow: none;
+            box-shadow: 0 0 0 3px rgba({{ $accentColorRGB }}, .12) !important;
         }
 
         .text-primary {
@@ -109,19 +117,20 @@
         </nav><!-- .nav-menu -->
     </header><!-- End Header -->
 
-    <!-- ======= hero Section ======= -->
+    <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex flex-column justify-content-center"
         style="background-image: url('{{ asset($about->cover) }}');">
-        <div class="container" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-            <h1>{{ $about->name }}</h1>
-            <p><span class="typed"></span></p>
+        <div class="container">
+            <p class="hero-eyebrow" data-aos="fade-up" data-aos-delay="50">Hi, I'm</p>
+            <h1 data-aos="fade-up" data-aos-delay="150">{{ $about->name }}</h1>
+            <p data-aos="fade-up" data-aos-delay="280"><span class="typed"></span></p>
             @if ($portfolioConfig['visibility']['cv'])
-                <div class="my-3">
+                <div class="my-3" data-aos="fade-up" data-aos-delay="400">
                     <a href="{{ $about->cv }}" class="btn btn-light btn-sm" download>Download CV</a>
                 </div>
             @endif
             @if ($about->social_links)
-                <div class="social-links">
+                <div class="social-links" data-aos="fade-up" data-aos-delay="520">
                     @foreach (json_decode($about->social_links) as $social)
                         <a href="{{ $social->link }}" target=="_blank" class="social-icon">
                             <i class="{{ $social->iconClass }}"></i>
@@ -268,8 +277,10 @@
                         <h2>Projects</h2>
                     </div>
                     <div>
-                        <div id="react-project-root" data-accentcolor="{{ $accentColor }}"
-                            data-demomode="{{ $demoMode }}" />
+                        <div id="react-project-root"
+                            data-accentcolor="{{ $accentColor }}"
+                            data-demomode="{{ $demoMode }}"
+                            @if(!empty($projects)) data-projects="{{ json_encode($projects) }}" @endif />
                         <div class="mb-5"></div>
                     </div>
                 </div>
@@ -370,8 +381,7 @@
                                         data-msg="Please write something" placeholder="Body"></textarea>
                                     <div class="validate"></div>
                                 </div>
-                                <div class="text-center"><button type="submit" class="submit-button">Send
-                                        Message</button></div>
+                                <div class="text-center"><button type="submit" id="submit" class="submit-button">Send Message</button></div>
                             </form>
                         </div>
                     </div>
